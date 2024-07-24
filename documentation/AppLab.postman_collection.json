@@ -1,0 +1,151 @@
+{
+	"info": {
+		"_postman_id": "6ec43205-3b23-4284-9f32-1ccf4613d8f3",
+		"name": "AppLab",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2883763"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"cschoen@example.net\",\r\n    \"password\":\"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:9000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Current User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "1|7yHj9tnzI3yeeBcWpRKnbLZ48vhHssO3QhyYFgy169fcbbc0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:9000/api/auth",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post User Activity",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "1|7yHj9tnzI3yeeBcWpRKnbLZ48vhHssO3QhyYFgy169fcbbc0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"stepsCount\" : 2500,\r\n    \"start_time\" : \"2024-07-24 00:00:00\",\r\n    \"end_time\" : \"2024-07-24 20:00:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:9000/api/activity",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"activity"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Activity Report",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "1|7yHj9tnzI3yeeBcWpRKnbLZ48vhHssO3QhyYFgy169fcbbc0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:9000/api/activity",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"activity"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
