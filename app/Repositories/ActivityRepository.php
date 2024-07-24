@@ -77,8 +77,8 @@ class ActivityRepository extends Repository
         $response = [];
         $response['topRanks'] = $this->userActivity->with('user')->where('start_time', '>=', Carbon::now()->startOfDay())->where('end_time', '<=', Carbon::now()->endOfDay())->orderBy('steps_count','desc')->limit(3)->get();
         $currentUserActivity = $this->userActivity->with('user')->select('user_id','steps_count')->where('user_id',Auth::user()->id)->where('start_time', '>=', Carbon::now()->startOfDay())->where('end_time', '<=', Carbon::now()->endOfDay())->first();
-        $response['aboveActivities'] =  $this->userActivity->with('user')->whereNot('user_id',Auth::user()->id)->where('steps_count','>=',$currentUserActivity->steps_count)->where('start_time', '>=', Carbon::now()->startOfDay())->where('end_time', '<=', Carbon::now()->endOfDay())->limit(3)->get();
-        $response['belowActivities'] =  $this->userActivity->with('user')->whereNot('user_id',Auth::user()->id)->where('steps_count','<=',$currentUserActivity->steps_count)->where('start_time', '>=', Carbon::now()->startOfDay())->where('end_time', '<=', Carbon::now()->endOfDay())->limit(3)->get();
+        $response['aboveActivities'] =  $this->userActivity->with('user')->whereNot('user_id',Auth::user()->id)->where('steps_count','>',$currentUserActivity->steps_count)->where('start_time', '>=', Carbon::now()->startOfDay())->where('end_time', '<=', Carbon::now()->endOfDay())->orderBy('steps_count','asc')->limit(3)->get();
+        $response['belowActivities'] =  $this->userActivity->with('user')->whereNot('user_id',Auth::user()->id)->where('steps_count','<',$currentUserActivity->steps_count)->where('start_time', '>=', Carbon::now()->startOfDay())->where('end_time', '<=', Carbon::now()->endOfDay())->orderBy('steps_count','desc')->limit(3)->get();
         $response['currentUserActivity'] = $currentUserActivity;
 
         return $this->result([
