@@ -57,7 +57,7 @@ class AuthRepository extends Repository
                 return $this->result([
                     'status'  => 'success',
                     'data'   => $user,
-                    'token'   => $user->createToken('App')->accessToken,
+                    'token'   => $user->createToken('App')->plainTextToken,
                     'httpstatus' => 200
                 ]);                
             }else{

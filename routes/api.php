@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\ActivityController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,8 +34,24 @@ Route::group(['prefix' => 'auth'], function () {
 | Protected routes
 |--------------------------------------------------------------------------
 */
-Route::group(['middleware' => 'auth:api'], function () {
+Route::group(['middleware' => 'auth:sanctum'], function () {
+
+    /*
+    |--------------------------------------------------------------------------
+    | Auth routes
+    |--------------------------------------------------------------------------
+    */    
     Route::group(['prefix' => 'auth'], function () {
         Route::get('/', [AuthController::class, 'user']);	
     });   
+
+    /*
+    |--------------------------------------------------------------------------
+    | Activity routes
+    |--------------------------------------------------------------------------
+    */  
+    Route::group(['prefix' => 'activity'], function () {
+        Route::post('/', [ActivityController::class, 'post']);	
+        Route::get('/', [ActivityController::class, 'report']);	
+    });      
 });   

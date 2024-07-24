@@ -93,6 +93,15 @@ return [
             // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
         ],
 
+        'app_db' => [
+            'driver'   => 'mongodb',
+            'host'     => env('APP_DB_HOST'),
+            'port'     => env('APP_DB_PORT'),
+            'database' => env('APP_DB_DATABASE'),
+            'username' => env('APP_DB_USERNAME'),
+            'password' => env('APP_DB_PASSWORD'),
+            'options'  => []
+        ],
     ],
 
     /*
